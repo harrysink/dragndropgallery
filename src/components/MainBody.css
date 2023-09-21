@@ -1,0 +1,25 @@
+main {
+    width: 100%;
+    position: relative;
+    margin: 110px 0px 0px 0px !important;
+    padding: 0px 55px 0px 55px !important;
+    /*border: 2px solid rgb(163, 153, 153);*/
+    /*border-radius: 10px;
+    background: whitegrey;
+    backdrop-filter: blur(3px);
+    box-shadow: 1px 1px 5px 1px rgba(14, 12, 12, 0.637);*/
+}
+img {
+    max-width: 100%;
+    min-height: 100%;
+}
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 33.1%);
+    gap: 5px;
+}
+h6 {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+

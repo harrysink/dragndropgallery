@@ -1,0 +1,94 @@
+nav {
+    display: flex;
+    align-self: center;
+    padding: 15px 75px 15px 75px !important;
+    background: white;
+    box-shadow: 2px 0px 7px 1px grey !important;
+    /*border: 1px solid red;*/
+}
+.navbar-toggler {
+    border: 1px solid black;
+    border-radius: 50%;
+    padding: 8px 10px 8px 10px;
+    background: rgb(116, 148, 86);
+    border: 1px solid rgb(116, 148, 86);
+    color: white;
+    margin: 0px;
+    transition: all .3s ease-in-out;
+}
+.navbar-toggler-span {
+    color: white;
+    transition: all .3s ease-in-out;
+}
+.navbar-toggler-span:hover {
+    color: rgb(20, 20, 19);
+    transition: all .3s ease-in-out;
+}
+.navbar-brand p {
+    font-family: Freestyle Script;
+    font-size: 30px !important;
+    border-radius: 20px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+/*.navbar-brand span {
+    color: rgb(75, 194, 75);
+    font-weight: bolder;
+}*/
+nav a {
+    text-decoration: none;
+    font-weight: bold;
+}
+form {
+    color: white;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    width: 280px;
+}
+form input {
+    width: 100%;
+    padding: 5px 10px 5px 10px;
+    color: black;
+    font-size: 14px;
+    border: 2px solid rgb(180, 177, 177);
+    border-radius: 6px;
+    background: transparent;
+}
+form input::placeholder {
+    color: rgb(160, 154, 154);
+}
+
+.signin-hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sign-in:hover {
+    text-decoration: none;
+    color: rgb(202, 146, 62);
+}
+.sign-in {
+    border: none;
+    color: white;
+    margin-right: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    background: transparent;
+    padding: 6px 11px 6px 11px;
+    transition: all .3s ease-in-out;
+}
+.sign-in p {
+    color: white;
+}
+.app-advert, .nav-item {
+    color: white;
+}
+/*Media query*/
+@media screen and (max-width: 468px) {
+    nav {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
