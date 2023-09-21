@@ -6,6 +6,7 @@ function LandingPage() {
   return (
     <div className="App">
       <UserAuthentication/>
+      <UserGallerypage/>
     </div>
   );
 }

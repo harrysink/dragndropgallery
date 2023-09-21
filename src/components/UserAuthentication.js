@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
+import { auth } from '../firebase';
 import { useNavigate} from 'react-router-dom';
 import './UserAuthentication.css';
 
@@ -17,7 +18,7 @@ function UserAuthentication() {
         try {
             setError('')
             setLoading(true)
-            await login(emailRef.current.value, passwordRef.current.value)
+            await login(auth, emailRef.current.value, passwordRef.current.value)
             navigate.push('/usergallerypage')
         } catch {
             setError('Failed to log in')
@@ -30,7 +31,7 @@ function UserAuthentication() {
             <div className='welcome-div'>
                 <p className='welcome-1'>Welcome back! <br></br><span>We missed you. Sign in to resume the fun</span></p>
             </div>
-            {error && {error}}
+            {error && <p>{error}</p>}
             <div className='form-div'>
                 <form onSubmit={handleSubmit}>
                     <p className='welcome-2'>Welcome back!</p>
