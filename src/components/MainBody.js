@@ -72,7 +72,7 @@ function MainBody() {
     const arrowRight = <FontAwesomeIcon icon={faChevronRight}
         style={
             {
-                fontSize: 12
+                fontSize: 12,
             {
         }
     />
