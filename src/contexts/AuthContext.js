@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { auth } from '../firebase';
+import { auth } from '../Firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const AuthContext = React.createContext();
 
@@ -12,11 +13,7 @@ export function AuthProvider({ children}) {
     const [loading, setLoading] = useState(true)
 
     function login(email, password) {
-        return auth.signInWithEmailAndPassword(email, password)
-    }
-
-    function logout() {
-        return auth.signOut()
+        return signInWithEmailAndPassword(auth, email, password)
     }
 
     useEffect(() => {
