@@ -75,6 +75,7 @@ function MainBody() {
                 fontSize: 12,
             {
         }
+    />
     return (
             <main>
                 <h6>My gallery {arrowRight}</h6>
