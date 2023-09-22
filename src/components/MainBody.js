@@ -69,13 +69,7 @@ function MainBody() {
         })
     }, []);
 
-    const arrowRight = <FontAwesomeIcon icon={faChevronRight}
-        style={
-            {
-                fontSize: 12,
-            {
-        }
-    />
+    const arrowRight = <FontAwesomeIcon icon={faChevronRight}/>
     return (
             <main>
                 <h6>My gallery {arrowRight}</h6>
