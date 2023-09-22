@@ -18,7 +18,7 @@ function UserAuthentication() {
             setError('')
             setLoading(true)
             await login(emailRef.current.value, passwordRef.current.value)
-            navigate.push('/usergallerypage')
+            navigate('/usergallerypage')
         } catch {
             setError('Failed to log in')
         }
