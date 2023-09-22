@@ -1,78 +1,98 @@
-import React, { useState } from "react";
+import React from 'react';
+import { useState } from "react";
+import { useDrag, useDrop } from 'react-dnd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { DndContext, closestCenter, MouseSensor, TouchSensor, DragOverlay, useSensor, useSensors } from '@dnd-kit/core';
-import { arrayMove, SortableContext, rectSortingStrategy } from '@dnd-kit/sortable';
-import { SortableCard } from "./SortableCard.js";
-import { Card } from './Card';
 import gallery from './Data.js';
 import './MainBody.css';
 
+function Card({src, title, id, index, moveImage}) {
+    const ref = React.useRef(null);
+
+    const [, drop] = useDrop({
+        accept: 'image',
+        hover: (item, monitor) => {
+            if (!ref.current) {
+                return;
+            }
+            const dragIndex = item.index;
+            const hoverIndex = index;
+
+            if (dragIndex === hoverIndex) {
+                return;
+            }
+            const hoverBoundingRect = ref.current?.getBoundingClientRect();
+            const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
+
+            const clientOffset = monitor.getClientOffset();
+            const hoverClientY = clientOffset.y - hoverBoundingRect.top;
+
+            if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
+                return;
+            }
+
+            moveImage(dragIndex, hoverIndex);
+
+            item.index = hoverIndex;
+        }
+    })
+    const [{ isDragging }, drag] = useDrag({
+        type: 'image',
+        item: () => {
+            return { id, index };
+        },
+        collect: (monitor) => {
+            return {
+                isDragging: monitor.isDragging()
+            };
+        }
+    });
+
+    const opacity = isDragging ? 0 : 1;
+    drag(drop(ref));
+
+    return (
+        <div ref={ref} style={{opacity}} className='card'>
+            <img src={src} alt={title} />
+        </div>
+    );
+};
+
 function MainBody() {
     const  [images, setImages] = useState(gallery);
-    const [activeId, setActiveId] = useState(null);
-    const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
+    const moveImage = React.useCallback((dragIndex, hoverIndex) => {
+        setImages((prevCards) => {
+            const clonedCards = [...prevCards];
+            const removedItem = clonedCards.splice(dragIndex, 1)[0];
+            clonedCards.splice(hoverIndex, 0, removedItem);
+            return clonedCards;
+        })
+    }, []);
+
     const arrowRight = <FontAwesomeIcon icon={faChevronRight}
         style={
             {
                 fontSize: 12,
-            }
+            {
         }
-    />
-
     return (
-        <main>
-            <h6>My gallery {arrowRight}</h6>
-            <div className='gallery-grid'>
-                <DndContext
-                    sensors={sensors}
-                    collisionDetection={closestCenter}
-                    onDragStart={handleDragStart}
-                    onDragEnd={handleDragEnd}
-                    onDragCancel={handleDragCancel}
-                >
-                    <SortableContext items={images} strategy={rectSortingStrategy}>
-                        {images.map((image, index) => (
-                            <SortableCard
+            <main>
+                <h6>My gallery {arrowRight}</h6>
+                <div className='gallery-grid'>
+                    {React.Children.toArray(
+                        images.map((image, index) => (
+                            <Card
                                 src={image.img}
                                 title={image.title}
                                 id={image.id}
                                 index={index}
+                                moveImage={moveImage}
                             />
-                        ))}
-                    </SortableContext>
-                    <DragOverlay>
-                        {activeId ? (
-                            <Card src={activeId} index={images.indexOf(activeId)}/>
-                        ) : null}
-                    </DragOverlay>
-                </DndContext>
-            </div>
-        </main>
-    )
-
-    function handleDragStart(event) {
-        setActiveId(event.active.id);
-    }
-
-    function handleDragEnd(event) {
-        const {active, over} = event;
-
-        if (active.id !== over.id) {
-            setImages((images) => {
-                const oldIndex = images.indexOf(active.id);
-                const newIndex = images.indexOf(over.id);
-
-                return arrayMove(images, oldIndex, newIndex);
-            });
-        }
-
-        setActiveId(null);
-    }
-
-    function handleDragCancel() {
-        setActiveId(null);
-    }
+                        ))
+                    )}
+                </div>
+            </main>
+        )
 }
 
 export default MainBody;
