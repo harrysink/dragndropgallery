@@ -23,7 +23,7 @@ function UserAuthentication() {
             setError('Failed to log in')
         }
 
-        setLoading(false)
+        setLoading(true)
     }
     return (
         <div className='main'>
