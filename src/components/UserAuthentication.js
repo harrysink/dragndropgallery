@@ -32,9 +32,9 @@ function UserAuthentication() {
             </div>
             {error && {error}}
             <div className='form-div'>
-                <form onSubmit={handleSubmit}>
+                <form className='sign-in' onSubmit={handleSubmit}>
                     <p className='welcome-2'>Welcome back!</p>
-                    <p>Sign in</p>
+                    <p className='signin-prompt'>Sign in</p>
                     <input 
                         type='email' 
                         placeholder='email' 
