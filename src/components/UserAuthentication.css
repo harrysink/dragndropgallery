@@ -56,7 +56,7 @@
     border-bottom-right-radius: 5px;
     background: white;
 }
-.form-div form {
+.form-div .sign-in {
     display: block;
     width: 100%;
 }
@@ -66,7 +66,7 @@
     font-size: 34px;
     font-weight: 650;
 }
-.form-div p {
+.form-div .signin-prompt {
     color: black;
     text-align: left;
     font-size: 28px;
@@ -74,23 +74,23 @@
     margin-top: 15px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.form-div form input {
+.email-input, .password-input {
     border: 1px solid rgb(172, 167, 167);
-    border-left: none;
-    border-right: none;
-    border-top: none;
+    border-left: none !important;
+    border-right: none !important;
+    border-top: none !important;
     border-radius: 0px;
     margin: 0px 0px 20px 0px;
     padding-left: 0px;
     color: black;
 }
-.form-div form input:focus {
+.email-input:focus, .password-input:focus {
     outline: none;
 }
-.form-div form input:last-of-type {
+.email-input:last-of-type, .password-input:last-of-type {
     margin-bottom: 30px;
 }
-.form-div form button {
+.form-div .sign-in button {
     margin: 0px 0px 10px 0px;
     border-radius: 15px;
     border: none;
@@ -101,23 +101,23 @@
     font-weight: 70px;
     transition: all .3s ease-in-out;
 }
-.form-div form button:hover {
+.form-div .sign-in button:hover {
     background: rgb(85, 82, 82);
     transition: all .3s ease-in-out;
 
 }
-.form-div form button:nth-of-type(3) {
+.form-div .sign-in button:nth-of-type(3) {
     border: none;
     background: white;
     color: black;
     font-weight: 100px;
     transition: all .3s ease-in-out;
 }
-.form-div form button:nth-of-type(3):hover {
+.form-div .sign-in button:nth-of-type(3):hover {
     text-decoration: underline;
     transition: all .3s ease-in-out;
 }
-.form-div form input::placeholder {
+.form-div .sign-in input::placeholder {
     color: rgb(153, 151, 151);
 }
 

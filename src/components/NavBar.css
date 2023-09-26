@@ -1,7 +1,12 @@
+@font-face {
+    font-family: Freestyle Script;
+    src: url(../assets/freestyle-script/FREESCPT.TTF);
+}
+
 nav {
     display: flex;
     align-self: center;
-    padding: 15px 75px 15px 75px !important;
+    padding: 15px 50px 15px 60px !important;
     background: white;
     box-shadow: 2px 0px 7px 1px grey !important;
     /*border: 1px solid red;*/
@@ -21,7 +26,7 @@ nav {
     transition: all .3s ease-in-out;
 }
 .navbar-toggler-span:hover {
-    color: rgb(20, 20, 19);
+    color: rgb(87, 87, 84);
     transition: all .3s ease-in-out;
 }
 .navbar-brand p {
@@ -38,6 +43,16 @@ nav {
 nav a {
     text-decoration: none;
     font-weight: bold;
+}
+.navbar-nav .nav-item {
+    color: black;
+    margin-top: 20px;
+    margin-bottom: 9px;
+    transition: all .3s ease-in-out;
+}
+.navbar-nav .nav-item:hover {
+    transition: all .3s ease-in-out;
+    text-decoration: underline;
 }
 form {
     color: white;
@@ -59,7 +74,9 @@ form input {
 form input::placeholder {
     color: rgb(160, 154, 154);
 }
-
+.form-2 {
+    display: none;
+}
 .signin-hamburger {
     display: flex;
     align-items: center;
@@ -79,13 +96,20 @@ form input::placeholder {
     padding: 6px 11px 6px 11px;
     transition: all .3s ease-in-out;
 }
-.sign-in p {
-    color: white;
-}
-.app-advert, .nav-item {
-    color: white;
-}
 /*Media query*/
+@media screen and (max-width: 795px) {
+    .form-1 {
+        display: none;
+    }
+    .form-2 {
+        display: unset;
+        margin-top: 15px;
+        width: 100%;
+    }
+    nav {
+        padding: 15px 30px 15px 37px !important;
+    }
+}
 @media screen and (max-width: 468px) {
     nav {
         padding-left: 20px;
